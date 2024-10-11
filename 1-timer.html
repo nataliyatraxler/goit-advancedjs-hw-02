@@ -1,54 +1,60 @@
 <!DOCTYPE html>
 <html lang="uk">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Таймер зворотного відліку</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
     <style>
-        .timer {
-            font-size: 2em;
-            margin-top: 20px;
-        }
+      .timer {
+        font-size: 2em;
+        margin-top: 20px;
+      }
 
-        .field {
-            margin: 10px 0;
-        }
+      .field {
+        margin: 10px 0;
+      }
     </style>
-</head>
+    <script type="module" crossorigin src="/goit-advancedjs-hw-02/1-timer.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-advancedjs-hw-02/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  </head>
 
-<body>
+  <body>
     <h1>Таймер зворотного відліку</h1>
 
     <!-- Поле вибору дати та часу -->
-    <input type="text" id="datetime-picker" placeholder="Виберіть дату та час" />
+    <input
+      type="text"
+      id="datetime-picker"
+      placeholder="Виберіть дату та час"
+    />
 
     <!-- Кнопка "Старт" -->
     <button type="button" id="start-button" disabled>Старт</button>
 
     <!-- Відображення таймера -->
     <div class="timer">
-        <div class="field">
-            <span class="value" id="days">00</span>
-            <span class="label">Дні</span>
-        </div>
-        <div class="field">
-            <span class="value" id="hours">00</span>
-            <span class="label">Години</span>
-        </div>
-        <div class="field">
-            <span class="value" id="minutes">00</span>
-            <span class="label">Хвилини</span>
-        </div>
-        <div class="field">
-            <span class="value" id="seconds">00</span>
-            <span class="label">Секунди</span>
-        </div>
+      <div class="field">
+        <span class="value" id="days">00</span>
+        <span class="label">Дні</span>
+      </div>
+      <div class="field">
+        <span class="value" id="hours">00</span>
+        <span class="label">Години</span>
+      </div>
+      <div class="field">
+        <span class="value" id="minutes">00</span>
+        <span class="label">Хвилини</span>
+      </div>
+      <div class="field">
+        <span class="value" id="seconds">00</span>
+        <span class="label">Секунди</span>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="./js/1-timer.js"></script>
-</body>
-
+  </body>
 </html>
