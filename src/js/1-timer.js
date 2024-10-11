@@ -1,4 +1,3 @@
-
 flatpickr("#datetime-picker", {
     enableTime: true,
     time_24hr: true,
@@ -17,14 +16,14 @@ flatpickr("#datetime-picker", {
 
 let countdownInterval;
 
-// Функція запуску таймера
 document.getElementById("start-button").addEventListener("click", function() {
-    const endDate = new Date(document.getElementById("datetime-picker").value);
+    const inputField = document.getElementById("datetime-picker");
+    inputField.disabled = true;  // Блокуємо інпут під час роботи таймера
+    document.getElementById("start-button").disabled = true; // Блокуємо кнопку під час роботи таймера
+    const endDate = new Date(inputField.value);
 
-    // Зупинка попереднього таймера, якщо був
-    clearInterval(countdownInterval);
+    clearInterval(countdownInterval);  // Зупинка попереднього таймера
 
-    // Оновлення таймера кожну секунду
     countdownInterval = setInterval(function() {
         const now = new Date().getTime();
         const timeRemaining = endDate.getTime() - now;
@@ -33,6 +32,8 @@ document.getElementById("start-button").addEventListener("click", function() {
             clearInterval(countdownInterval);
             updateTimerDisplay(0, 0, 0, 0);
             alert("Таймер завершено!");
+            inputField.disabled = false;  // Розблоковуємо інпут після завершення таймера
+            document.getElementById("start-button").disabled = false; // Розблоковуємо кнопку після завершення
         } else {
             const { days, hours, minutes, seconds } = convertMs(timeRemaining);
             updateTimerDisplay(days, hours, minutes, seconds);
@@ -40,7 +41,6 @@ document.getElementById("start-button").addEventListener("click", function() {
     }, 1000);
 });
 
-// Функція для обчислення часу, що залишився
 function convertMs(ms) {
     const second = 1000;
     const minute = second * 60;
@@ -55,7 +55,6 @@ function convertMs(ms) {
     return { days, hours, minutes, seconds };
 }
 
-// Функція оновлення відображення таймера
 function updateTimerDisplay(days, hours, minutes, seconds) {
     document.getElementById("days").textContent = String(days).padStart(2, "0");
     document.getElementById("hours").textContent = String(hours).padStart(2, "0");

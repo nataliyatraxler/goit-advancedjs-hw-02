@@ -1,14 +1,19 @@
 document.querySelector('.form').addEventListener('submit', function(event) {
     event.preventDefault();  // Зупиняємо стандартну поведінку форми
 
-    // Отримуємо дані з форми
-    const delay = document.querySelector('input[name="delay"]').value;
+    // Отримуємо значення з форми та перетворюємо на число
+    const delay = Number(document.querySelector('input[name="delay"]').value);
     const state = document.querySelector('input[name="state"]:checked').value;
 
+    // Перевірка, чи є затримка валідним числом
+    if (isNaN(delay) || delay <= 0) {
+        alert("Будь ласка, введіть дійсну затримку в мілісекундах.");
+        return;
+    }
+
     // Створюємо проміс
-    createPromise(Number(delay), state)
+    createPromise(delay, state)
         .then(message => {
-            // Використовуємо iziToast для показу успішного повідомлення
             iziToast.success({
                 title: 'Success',
                 message: message,
@@ -16,7 +21,6 @@ document.querySelector('.form').addEventListener('submit', function(event) {
             });
         })
         .catch(error => {
-            // Використовуємо iziToast для показу помилки
             iziToast.error({
                 title: 'Error',
                 message: error,
