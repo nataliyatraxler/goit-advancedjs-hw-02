@@ -10,6 +10,7 @@ document.querySelector('.form').addEventListener('submit', function(event) {
         alert("Будь ласка, введіть дійсну затримку в мілісекундах.");
         return;
     }
+    
 
     // Створюємо проміс
     createPromise(delay, state)
